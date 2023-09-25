@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Mi Página Web</title>
+        <link rel="stylesheet" type="text/css" href="stylecalculos.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <div class="back">
+                <div class="menu container">
+                    <a href="index.html" class="logo">Francisco Faba</a>
+                    <input type="checkbox" id="menu"/>
+                    <label for="menu">
+                        <img src="images\660376.png" class="menu-icono" alt="">
+                    </label>
+                    <nav class="navbar">
+                        
+                        <ul>
+                            <li><a class="BotonNav" href="galeria.html" >Galería</a></li>
+                            <li><a class="BotonNav" href="contactos.html" >Contacto</a></li>
+                            <li><a class="BotonNav" href="sobremi.html" >Sobre mí</a></li>
+                            <li><a class="BotonNav" href="calculos.html" >Cálculos</a></li>
+                        </ul>
+                    </nav>
+                </div>    
+            </div>
+        </header>
+        <div class="contenedoor">
+            <div class="cont">
+                <label for="operacion">Selecciona una operación:</label><br>
+                <select id="operacion">
+                    <option value="sumar">Sumar</option>
+                    <option value="restar">Restar</option>
+                    <option value="multiplicar">Multiplicar</option>
+                    <option value="dividir">Dividir</option>
+                </select><br><br><br>
+
+                <div id="calculator-container">
+                    <form id="calculator-form">
+                        <label for="num1">Número 1:</label>
+                        <input type="number" id="num1" required>
+                        <br><br>
+                        <label for="num2">Número 2:</label>
+                        <input type="number" id="num2" required>
+                        <br><br>
+                        <input class="button" type="submit" value="Calcular">
+                    </form><br><br>
+                    <p>Resultado: <span id="result"></span></p>
+                </div>
+            </div>
+            
+        </div>
+
+       
+        <script>
+            function calcular() {
+                const num1 = parseFloat(document.getElementById("num1").value);
+                const num2 = parseFloat(document.getElementById("num2").value);
+                const operacion = document.getElementById("operacion").value;
+                let resultado;
+    
+                switch (operacion) {
+                    case "sumar":
+                        resultado = num1 + num2;
+                        break;
+                    case "restar":
+                        resultado = num1 - num2;
+                        break;
+                    case "multiplicar":
+                        resultado = num1 * num2;
+                        break;
+                    case "dividir":
+                        resultado = num1 / num2;
+                        break;
+                    default:
+                        resultado = "Operación no válida";
+                }
+    
+                document.getElementById("result").textContent = resultado;
+            }
+
+            document.getElementById("operacion").addEventListener("change", function() {
+                document.getElementById("calculator-container").style.display = "block";
+            });
+    
+            document.getElementById("calculator-form").addEventListener("submit", function(event) {
+                event.preventDefault(); 
+                calcular();
+            });
+        </script>
+        
+
+    </body>
+</html>
